@@ -12,7 +12,7 @@ public abstract class Usuario {
 		return app.muestrasEnviadasDe(this);
 	}
 	public Integer cantidadDeMuestrasVerificadas(AplicacionVinchuca app) {
-		return  0;
+		return  app.verificacionesDe(this);
 	}
 	public abstract void chequearEstado();
 	
@@ -24,5 +24,12 @@ public abstract class Usuario {
 	}
 	public void enviarMuestra(Muestra nuevaMuestra, AplicacionVinchuca ap) {
 		ap.recibirMuestra(nuevaMuestra);
+	}
+	public void verificarMuestra(Verificacion verificacion, Muestra nuevaMuestra, AplicacionVinchuca ap){
+		
+		if(nuevaMuestra.esMuestraVerificablePara(this, verificacion)) {
+			nuevaMuestra.agregarVerificacion(verificacion); 
+			ap.recibirMuestra(nuevaMuestra);
+		}
 	}
 }

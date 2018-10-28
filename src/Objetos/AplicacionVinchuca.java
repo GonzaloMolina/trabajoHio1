@@ -23,4 +23,9 @@ public class AplicacionVinchuca {
 	return muestras.stream().filter( unaMuestra -> unaMuestra.esDeUsuario(usuario.getAlias()))
 		.collect(Collectors.toList()).size();	
 	}
+	public Integer verificacionesDe(Usuario usuario) {
+	
+	return muestras.stream().filter( unaMuestra -> unaMuestra.tieneVerificacionDe(usuario.getAlias()))
+			.collect(Collectors.toList()).size();
+	}
 }

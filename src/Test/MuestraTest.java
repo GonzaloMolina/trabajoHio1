@@ -3,7 +3,9 @@ package Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
+import Objetos.AplicacionVinchuca;
 import Objetos.Muestra;
 import Objetos.NivelDeConocimiento;
 import Objetos.Usuario;
@@ -27,8 +29,14 @@ class MuestraTest {
 		Usuario usuario1 = new UsuarioComun("usuario1");
 		Usuario usuario2 = new UsuarioComun("usuario2");
 		 Verificacion vr = new Verificacion(usuario1, "vinchuca");
-		
+		 Verificacion v2 = new Verificacion(usuario2, "vinnchuca");
+		 AplicacionVinchuca app = Mockito.mock(AplicacionVinchuca.class);
+				 
+				 
 		Muestra nuevaMuestra = new Muestra(usuario1.getAlias() , vr); 
+		usuario2.verificarMuestra(v2, nuevaMuestra, app);
+		
+		assertEquals( 1 , nuevaMuestra.getNivelDeVerificion());
 	}
 
 }

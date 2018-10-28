@@ -17,4 +17,7 @@ public class Verificacion {
 	public NivelDeVerificacion getNivelDeVerificacion() {
 		return this.usuarioVerificador.getNivelDeVerificacion();
 	}
+	public boolean esVerificacionDe(String alias) {
+		return usuarioVerificador.getAlias() == alias;
+	}
 }

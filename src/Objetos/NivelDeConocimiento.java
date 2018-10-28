@@ -1,15 +1,12 @@
 package Objetos;
 
-public class NivelDeConocimiento {
+public abstract class NivelDeConocimiento {
 	protected Integer rankingDeConocimineto;
+	protected NivelDeVerificacion nivelDeVerificacion;
 	
 	
 	public Integer getRanking() {
 		return this.rankingDeConocimineto;
 	}
-
-
-	public NivelDeVerificacion getNivelDeVerificacion() {
-		return NivelDeVerificacion.BAJA;
-	}
+	 public abstract NivelDeVerificacion getNivelDeVerificacion();
 }

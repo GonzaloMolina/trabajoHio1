@@ -9,74 +9,51 @@ import EstadosDeVerificacion.NivelDeVerificacion;
 
 public class Muestra {
 	
-	private Set<Verificacion> verificaciones= new HashSet<Verificacion>(); 
-	// si tenemos tiempo delegar este colaborador en un objeto que lo calcule
+	private VerificadorDeMuestra verificador;
+	
 	private String fotografia;
 	private Ubicacion ubicacionDeLaMuestra;
-	private NivelDeVerificacion nivelDeVerificacionDeMuestra;
 	private String aliasDePrimerVerificador;
 
 	
 	//Constructores
 	public Muestra(String aliasVerificador, Verificacion verificacion) {
-		this.verificaciones.add(verificacion);
-		this.nivelDeVerificacionDeMuestra = verificacion.getNivelDeVerificacion();
+		this.verificador = new VerificadorDeMuestra(verificacion);
+				//verificacion.getNivelDeVerificacion 
 		this.aliasDePrimerVerificador 	  = aliasVerificador;
 	}
 	
 	//Geters
 	public NivelDeVerificacion getNivelDeVerificion() {
-		return this.nivelDeVerificacionDeMuestra;
-	}
-	
-	public String getAliasDeCreadorDeMuestra() {
-		return this.aliasDePrimerVerificador;
-	}
-	private  Integer tamanioDeVerificaciones() {
-		//no es mi responsabilidad
-		return this.verificaciones.size();
+		return this.verificador.getNivelDeVerificacion();
 	}
 	//Booleans 
 	public Boolean esDeUsuario(String alias) {
 		return this.aliasDePrimerVerificador == alias;
 	}
-	public boolean esMuestraVerificablePara (Usuario u, Verificacion v) {
-		
-		return this.getAliasDeCreadorDeMuestra() != u.getAlias() || 
-			   this.tamanioDeVerificaciones() < 3;
+
+	public boolean esMuestraVerificablePara(String alias, Verificacion verificacion, Muestra nuevaMuestra) {
+		return this.verificador.puedeVerificar(alias, verificacion, nuevaMuestra);
 	}
 	public Boolean tieneVerificacionDe(String alias) {
-		boolean res = false;
-		for(Verificacion v : verificaciones) {
-			res = res || v.esVerificacionDe(alias);
-		}
-		return res;
+		return this.verificador.tieneVerificacionDe(alias);
 	}
 	public boolean esVerificacionAlta() {
-		return this.tamanioDeVerificaciones() == 3;
+		return this.verificador.esVerificacionAlta();
 	}
 		
 	//Acciones que realiza la muestra
+	
 	public void cambiarVerificacion(NivelDeVerificacion nuevoNivel) {
-		this.nivelDeVerificacionDeMuestra = nuevoNivel;
+		this.verificador.nuevoEstado(nuevoNivel);
 	}
 	public void agregarVerificacion(Verificacion verificacion) {
-		this.verificaciones.add(verificacion);
-		this.nivelDeVerificacionDeMuestra.chequerEstadoDe(this);
+		this.verificador.agregarVerificacion(verificacion);
 	}
 
-	//public String void getTipoDeMuestra(){
-		//por cada muestra hay que ver las observaciones y el tipo de usuario
-		
-	//	if(verificador.todosLosUsuariosMismoNivel) {
-	//		verificador.observacionFinal();
-	//	}
-	//	if(verificador.algunoDiferente) {
-	//		verificador.getMayorNivel
-	//	}
-	//	if(verificador.todosDifertentes) {
-	//		verificador.getObservacionDeMayorNivel();
-	//	}
+	
+
+	
 		
 		
 	}

@@ -1,5 +1,7 @@
 package Objetos;
 
+import EstadosDeVerificacion.NivelDeVerificacion;
+
 public class Verificacion {
 	private Usuario usuarioVerificador;
 	private String observacionDeUsuario;

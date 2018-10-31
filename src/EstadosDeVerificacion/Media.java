@@ -1,4 +1,6 @@
-package Objetos;
+package EstadosDeVerificacion;
+
+import Objetos.Muestra;
 
 public class Media extends NivelDeVerificacion {
 

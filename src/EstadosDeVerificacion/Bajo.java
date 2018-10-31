@@ -1,13 +1,15 @@
-package Objetos;
+package EstadosDeVerificacion;
+
+import Objetos.Muestra;
 
 public class Bajo extends NivelDeVerificacion {
 
 	@Override
 	public void chequerEstadoDe(Muestra muestra) {
-		if(muestra.esVerificacionMedia()) {
-			muestra.cambiarVerificacion(new Media());
-		}else {
+		if(muestra.esVerificacionAlta()) {
 			muestra.cambiarVerificacion(new Alta());
+		}else {
+			muestra.cambiarVerificacion(new Media());
 		}
 		
 	}

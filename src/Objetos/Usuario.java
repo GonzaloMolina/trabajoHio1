@@ -1,20 +1,26 @@
 package Objetos;
 
+
+import EstadosDeConocimiento.NivelDeConocimiento;
+import EstadosDeVerificacion.NivelDeVerificacion;
+
 public abstract class Usuario {
 	private String identificacion;
 	protected NivelDeConocimiento nivelDeConocimiento;
 	
-	
+	//Constructor
 	public Usuario(String alias) {
 		this.identificacion = alias;
 	}
+	//Mensajes que buscan algo
 	public Integer cantidadDeMuestrasEnviadas(AplicacionVinchuca app) {
 		return app.muestrasEnviadasDe(this);
 	}
 	public Integer cantidadDeMuestrasVerificadas(AplicacionVinchuca app) {
 		return  app.verificacionesDe(this);
 	}
-	public abstract void chequearEstado();
+	
+	//Geters
 	
 	public String getAlias() {
 		return this.identificacion;
@@ -22,14 +28,30 @@ public abstract class Usuario {
 	public NivelDeVerificacion getNivelDeVerificacion() {
 		return nivelDeConocimiento.getNivelDeVerificacion();
 	}
-	public void enviarMuestra(Muestra nuevaMuestra, AplicacionVinchuca ap) {
-		ap.recibirMuestra(nuevaMuestra);
+	
+	//Acciones del usuario
+	
+	public void enviarMuestra(Muestra nuevaMuestra, AplicacionVinchuca app) {
+		this.enviarMuestraAlaAplicacion(nuevaMuestra, app);
+		this.chequearEstado(this, app);
 	}
-	public void verificarMuestra(Verificacion verificacion, Muestra nuevaMuestra, AplicacionVinchuca ap){
+	
+	private void chequearEstado(Usuario usuario, AplicacionVinchuca app) {
+		usuario.nivelDeConocimiento.resolverEstado(this, app);
+	}
+	private void enviarMuestraAlaAplicacion(Muestra nuevaMuestra, AplicacionVinchuca app) {
+		app.recibirMuestra(nuevaMuestra);
 		
+	}
+	public void verificarMuestra(Verificacion verificacion, Muestra nuevaMuestra, AplicacionVinchuca app){
 		if(nuevaMuestra.esMuestraVerificablePara(this, verificacion)) {
 			nuevaMuestra.agregarVerificacion(verificacion); 
-			ap.recibirMuestra(nuevaMuestra);
+			this.enviarMuestra(nuevaMuestra, app);
 		}
+		this.chequearEstado(this, app);
 	}
+	public void setNivelDeConocimiento(NivelDeConocimiento nuevoNivel) {
+		this.nivelDeConocimiento = nuevoNivel;
+	}
+
 }

@@ -5,9 +5,9 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+
 import Objetos.AplicacionVinchuca;
 import Objetos.Muestra;
-import Objetos.NivelDeConocimiento;
 import Objetos.Usuario;
 import Objetos.UsuarioComun;
 import Objetos.Verificacion;
@@ -18,11 +18,10 @@ class MuestraTest {
 	void unaMuestraDeUnUsuarioNovatoTieneNivelDeVerificacionBajo() {
 	   Usuario usuario1 = new UsuarioComun("usuario");
 	   Verificacion vr = new Verificacion(usuario1, "vinchuca");
-	   
+	 	   
 	   Muestra nuevaMuestra = new Muestra("usuario" , vr); 
-	   
-	   assertEquals( 0 , nuevaMuestra.getNivelDeVerificion());
 	 
+	   assertEquals( 0 , nuevaMuestra.getNivelDeVerificion());
 	}
 	@Test
 	void unMuestraConDosVerificacionesDeUsuariosbajosTieneNivelMedio() {

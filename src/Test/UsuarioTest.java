@@ -23,6 +23,10 @@ class UsuarioTest {
 		assertEquals(new Integer(0) , usuarioComun1.cantidadDeMuestrasVerificadas(ap));
 		assertEquals("usuario1" , usuarioComun1.getAlias());
 		
+	}	
+	@Test
+	void unUsuarioEspecialiastaTieneNivelDeConocimientoEspecialiasta() {
+		
 	}
 	@Test 
 	void unUsuarioComunEnviaUnaMuestraALaAplicacion() {

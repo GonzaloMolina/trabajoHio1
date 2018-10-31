@@ -1,4 +1,6 @@
-package Objetos;
+package EstadosDeVerificacion;
+
+import Objetos.Muestra;
 
 public class Alta extends NivelDeVerificacion {
 
@@ -7,4 +9,5 @@ public class Alta extends NivelDeVerificacion {
 		
 	}
 
+	
 }

@@ -5,8 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 import Objetos.AplicacionVinchuca;
-import Objetos.Muestra;
-import Objetos.Verificacion;
+
 
 class AplicacionVinchucaTest {
 

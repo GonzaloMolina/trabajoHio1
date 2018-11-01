@@ -46,8 +46,9 @@ public abstract class Usuario {
 	//Nose si esta bien fusionar la muestra en este mensaje, quizas tendríamos que 
 	//hacer un mensaje que sea tipo  this.creacionDeVerificacion(verificacion, muestra)
 	//asi sacamos ese if horrendo de ahí
+	
 	public void verificarMuestra(Verificacion verificacion, Muestra nuevaMuestra, AplicacionVinchuca app){
-		if(nuevaMuestra.esMuestraVerificablePara(this.getAlias(), verificacion, nuevaMuestra)) {
+		if(nuevaMuestra.esMuestraVerificablePara(this.getAlias(), verificacion)){
 			nuevaMuestra.agregarVerificacion(verificacion); 
 			this.enviarMuestra(nuevaMuestra, app);
 		}

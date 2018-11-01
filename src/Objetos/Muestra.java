@@ -32,8 +32,8 @@ public class Muestra {
 		return this.aliasDePrimerVerificador == alias;
 	}
 
-	public boolean esMuestraVerificablePara(String alias, Verificacion verificacion, Muestra nuevaMuestra) {
-		return this.verificador.puedeVerificar(alias, verificacion, nuevaMuestra);
+	public boolean esMuestraVerificablePara(String alias, Verificacion verificacion) {
+		return this.verificador.puedeVerificar(alias, verificacion);
 	}
 	public Boolean tieneVerificacionDe(String alias) {
 		return this.verificador.tieneVerificacionDe(alias);
@@ -49,6 +49,7 @@ public class Muestra {
 	}
 	public void agregarVerificacion(Verificacion verificacion) {
 		this.verificador.agregarVerificacion(verificacion);
+		this.verificador.chequearNivelDeVerificacion(this);
 	}
 
 	

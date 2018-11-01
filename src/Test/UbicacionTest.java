@@ -2,18 +2,26 @@ package Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import Objetos.Ubicacion;
 
 class UbicacionTest {
-
+	
+	Ubicacion ubicacion; 
+	
+	@BeforeEach
+	void setUp() {
+		ubicacion = new Ubicacion(10d , 10d);
+	}
+	
 	@Test
 	void unaUbicacionTieneLatitudYLongitud() {
-		Ubicacion ub1 = new Ubicacion(10d , 10d);
 		
-		assertEquals(new Double(10) , ub1.getLatitud());
-		assertEquals(new Double(10) , ub1.getLongitud());
+		
+		assertEquals(new Double(10) , ubicacion.getLatitud());
+		assertEquals(new Double(10) , ubicacion.getLongitud());
 	}
 
 }

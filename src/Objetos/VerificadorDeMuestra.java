@@ -36,11 +36,19 @@ public class VerificadorDeMuestra {
 	public boolean esVerificacionAlta() {
 		return this.cantidadDeVerificaciones() == 3;
 	}
-	public boolean puedeVerificar(String usuario, Verificacion nuevaVerificacion, Muestra muestra) {
-		return muestra.usuarioNoVerifico(usuario);
+	public boolean puedeVerificar(String usuario, Verificacion nuevaVerificacion) {
+		boolean res = false;
+		for(Verificacion v : verificaciones) {
+			res = res || v.noEsVerificacionDe(usuario);
+		}
+		return res;
 	}
 	public Boolean tieneVerificacionDe(String alias) {
 		return null;
+	}
+	public void chequearNivelDeVerificacion(Muestra muestra) {
+		this.nivelDeVerificacionDeMuestra.chequerEstadoDe(muestra);
+		
 	}
 }
 

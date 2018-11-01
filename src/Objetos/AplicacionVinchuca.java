@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 public class AplicacionVinchuca {
 	private Set<Muestra> muestras = new HashSet<Muestra>();
 	private Set<Usuario> usuarios = new HashSet<Usuario>();
+	private CalculadoraDeDistancias calculadoraDistancias= new CalculadoraDeDistancias();
 	
 	
 	public Set<Muestra> getMuestras(){
